@@ -78,7 +78,7 @@ class SDG1050(BaseAWG):
 
     def initialize(self):
         self.connect()
-        self.send_command("SYST:SCR ON")
+        "self.send_command("SYST:SCR ON")"
         self.r_load = DEFAULT_LOAD
         self.v_out_coeff = 1.0
         self.output_on = DEFAULT_OUTPUT_ON
