@@ -6,8 +6,6 @@ Created on Apr 24, 2018
 Driver for BK Precision BK4075 AWG.
 '''
 
-import universal_usbtmc
-
 # import serial
 import usbtmc
 import time
