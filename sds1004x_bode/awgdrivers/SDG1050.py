@@ -6,7 +6,6 @@ Created on Apr 24, 2018
 Driver for BK Precision BK4075 AWG.
 '''
 
-import pyusb
 import usbtmc
 import time
 from .base_awg import BaseAWG
