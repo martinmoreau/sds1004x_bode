@@ -70,7 +70,7 @@ class SDG1050(BaseAWG):
         self.ser.write(EOL)
         time.sleep(SLEEP_TIME)
         """
-        self.instr.ask(cmd)
+        self.instr.write(cmd)
         time.sleep(SLEEP_TIME)
 
     def initialize(self):
