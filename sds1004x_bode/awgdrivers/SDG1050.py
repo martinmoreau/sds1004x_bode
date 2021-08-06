@@ -112,7 +112,7 @@ class SDG1050(BaseAWG):
             self.send_command("C1:OUTP ON")
         else:
             self.send_command("C1:OUTP ON")
-        print("output set")
+        print "output set"
     def set_frequency(self, channel, freq):
         """
         Sets output frequency.
