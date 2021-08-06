@@ -60,6 +60,7 @@ class SDG1050(BaseAWG):
     def connect(self):
         "self.ser = serial.Serial(self.port, self.baud_rate, BITS, PARITY, STOP_BITS, timeout=self.timeout)"
         self.instr = usbtmc.Instrument(62701, 60986)
+        self.instr.ask(*RST)
 
     def disconnect(self):
         "self.ser.close()"
