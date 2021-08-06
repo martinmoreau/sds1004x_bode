@@ -112,8 +112,7 @@ class SDG1050(BaseAWG):
             self.send_command("C1:OUTP ON")
         else:
             self.send_command("C1:OUTP ON")
-        print "output set"
-    def set_frequency(self, channel, freq):
+       def set_frequency(self, channel, freq):
         """
         Sets output frequency.
 
@@ -130,7 +129,7 @@ class SDG1050(BaseAWG):
 
         freq_str = "%.10f" % freq
         cmd = "C1:BSWV FRQ,%s" % (freq_str)
-        print(cmd)
+        print cmd
         self.send_command(cmd)
 
     def set_phase(self, phase):
@@ -158,7 +157,7 @@ class SDG1050(BaseAWG):
             raise ValueError("Incorrect wave type.")
 
         cmd = WAVEFORM_COMMANDS[wave_type]
-        print(cmd)
+        print cmd
         self.send_command(cmd)
 
     def set_amplitue(self, channel, amplitude):
@@ -181,6 +180,7 @@ class SDG1050(BaseAWG):
 
         amp_str = "%.3f" % amplitude
         cmd = "C1:BSWV AMP,%s" % (amp_str)
+        print cmd
         self.send_command(cmd)
 
     def set_offset(self, channel, offset):
@@ -202,6 +202,7 @@ class SDG1050(BaseAWG):
         offset = offset * self.v_out_coeff
 
         cmd = ":C1:BSWV OFST,%s" % (offset)
+        print cmd
         self.send_command(cmd)
 
     def set_load_impedance(self, channel, z):
