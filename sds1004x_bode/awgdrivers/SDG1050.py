@@ -130,6 +130,7 @@ class SDG1050(BaseAWG):
 
         freq_str = "%.10f" % freq
         cmd = "C1:BSWV FRQ,%s" % (freq_str)
+        print(cmd)
         self.send_command(cmd)
 
     def set_phase(self, phase):
