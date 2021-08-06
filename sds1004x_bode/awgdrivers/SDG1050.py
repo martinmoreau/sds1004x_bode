@@ -51,7 +51,7 @@ class SDG1050(BaseAWG):
     BK Precision 4075 generator driver.
     https://www.bkprecision.com/products/discontinued/4075-25-mhz-arbitrary-waveform-function-generator.html
     '''
-    SHORT_NAME = "bk4075"
+    SHORT_NAME = "SDG1050"
 
     def __init__(self, port, baud_rate=DEFAULT_BAUD_RATE, timeout=TIMEOUT):
         if not baud_rate in BAUD_RATES:

@@ -30,4 +30,3 @@ awg_factory.add_awg(JDS6600.SHORT_NAME, JDS6600)
 awg_factory.add_awg(BK4075.SHORT_NAME, BK4075)
 awg_factory.add_awg(FY6600.SHORT_NAME, FY6600)
 awg_factory.add_awg(SDG1050.SHORT_NAME, SDG1050)
-
