@@ -159,7 +159,7 @@ class SDG1050(BaseAWG):
 
         cmd = WAVEFORM_COMMANDS[wave_type]
         print cmd
-        self.send_command('*IDN')
+        self.send_command(cmd)
 
     def set_amplitue(self, channel, amplitude):
         """
