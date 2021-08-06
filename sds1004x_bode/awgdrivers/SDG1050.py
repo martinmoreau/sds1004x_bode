@@ -27,10 +27,10 @@ EOL = '\x0D\x0A'
 CHANNELS = (0, 1)
 CHANNELS_ERROR = "BK4075 has only one channel."
 WAVEFORM_COMMANDS = {
-    constants.SINE: ":SOUR:FUNC SIN",
-    constants.SQUARE: ":SOUR:FUNC SQU",
-    constants.PULSE: ":SOUR:FUNC PUL",
-    constants.TRIANGLE: ":SOUR:FUNC TRI"
+    constants.SINE: "C1:BSWV WVTP,SINE",
+    constants.SQUARE: "C1:BSWV WVTP,SQUARE",
+    constants.PULSE: ":C1:BSWV WVTP,PULSE",
+    constants.TRIANGLE: "C1:BSWV WVTP,RAMP"
 }
 # Delay between commands. BK4075 doesn't seem to need it.
 SLEEP_TIME = 0.005
@@ -60,7 +60,6 @@ class SDG1050(BaseAWG):
     def connect(self):
         "self.ser = serial.Serial(self.port, self.baud_rate, BITS, PARITY, STOP_BITS, timeout=self.timeout)"
         self.instr = usbtmc.Instrument(62701, 60986)
-        self.instr.ask("*RST")
 
     def disconnect(self):
         "self.ser.close()"
@@ -110,9 +109,9 @@ class SDG1050(BaseAWG):
         self.output_on = on
 
         if self.output_on:
-            self.send_command(":OUTP:STAT ON")
+            self.send_command("C1:OUTP ON")
         else:
-            self.send_command(":OUTP:STAT OFF")
+            self.send_command("C1:OUTP ON")
 
     def set_frequency(self, channel, freq):
         """
@@ -130,7 +129,7 @@ class SDG1050(BaseAWG):
             raise UnknownChannelError(CHANNELS_ERROR)
 
         freq_str = "%.10f" % freq
-        cmd = ":FREQ %s" % (freq_str)
+        cmd = "C1:BSWV FRQ,%s" % (freq_str)
         self.send_command(cmd)
 
     def set_phase(self, phase):
@@ -179,7 +178,7 @@ class SDG1050(BaseAWG):
         amplitude = amplitude * self.v_out_coeff
 
         amp_str = "%.3f" % amplitude
-        cmd = ":VOLT:AMPL %s" % (amp_str)
+        cmd = "C1:BSWV AMP,%s" % (amp_str)
         self.send_command(cmd)
 
     def set_offset(self, channel, offset):
@@ -200,7 +199,7 @@ class SDG1050(BaseAWG):
         # Adjust the offset voltage to match the defined load impedance
         offset = offset * self.v_out_coeff
 
-        cmd = ":VOLT:OFFS %s" % (offset)
+        cmd = ":C1:BSWV OFST,%s" % (offset)
         self.send_command(cmd)
 
     def set_load_impedance(self, channel, z):
