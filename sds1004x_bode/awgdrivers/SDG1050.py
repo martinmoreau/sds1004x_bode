@@ -46,7 +46,7 @@ DEFAULT_OUTPUT_ON = False
 R_IN = 50.0
 
 
-class BK4075(BaseAWG):
+class SDB1050(BaseAWG):
     '''
     BK Precision 4075 generator driver.
     https://www.bkprecision.com/products/discontinued/4075-25-mhz-arbitrary-waveform-function-generator.html
